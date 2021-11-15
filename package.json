@@ -1,0 +1,19 @@
+{
+  "name": "Desafio-Ton",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1028.0",
+    "dotenv": "^10.0.0"
+  },
+  "devDependencies": {
+    "serverless": "^2.66.1"
+  }
+}
