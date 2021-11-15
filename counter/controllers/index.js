@@ -10,10 +10,10 @@ const getCurrentCounterValueUseCase = new GetCurrentCounterValueUseCase(counterR
 const getCounterController = require('./getCounter')
 
 exports.hitCounter = async () => {
-    await hitCounterController(hitCounterUseCase)
+    return await hitCounterController(hitCounterUseCase)
 };
 
 exports.getCounter = async () => {
-    await getCounterController(getCurrentCounterValueUseCase)
+    return await getCounterController(getCurrentCounterValueUseCase)
 };
 

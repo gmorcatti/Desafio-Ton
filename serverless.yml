@@ -1,0 +1,27 @@
+service: desafio-ton
+
+provider: 
+  name: aws
+  runtime: nodejs14.x
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+  memorySize: 128
+  timeout: 3
+
+functions:
+  hitCounter: 
+    handler: counter/controllers/index.hitCounter
+    description: Método para dar hit no Contador
+    events: 
+      - http:
+          path: /counter/hit
+          method: post
+          cors: true
+  getCounter: 
+    handler: counter/controllers/index.getCounter
+    description: Método para buscar valor do Contador
+    events: 
+      - http:
+          path: /counter
+          method: get
+          cors: true
