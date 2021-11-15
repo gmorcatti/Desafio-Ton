@@ -9,7 +9,10 @@ const GetCurrentCounterValueUseCase = require('../useCases/getCurrentCounterValu
 const getCurrentCounterValueUseCase = new GetCurrentCounterValueUseCase(counterRepository);
 const getCounterController = require('./getCounter')
 
-exports.hitCounter = async () => {
+exports.hitCounter = async (event, context) => {
+
+    console.log('event', event)
+    console.log('context', context)
     return await hitCounterController(hitCounterUseCase)
 };
 
