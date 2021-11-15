@@ -1,9 +1,10 @@
-module.exports = async function(hitCounterUseCase) {
+module.exports = async function(getUserUseCase, id) {
     try {
 
-        await hitCounterUseCase.handle();
+        const user = await getUserUseCase.handle(id);
         return {
-            statusCode: 200
+            statusCode: 200,
+            body: JSON.stringify(user)
         }
 
     } catch (error) {

@@ -10,9 +10,6 @@ const getCurrentCounterValueUseCase = new GetCurrentCounterValueUseCase(counterR
 const getCounterController = require('./getCounter')
 
 exports.hitCounter = async (event, context) => {
-
-    console.log('event', event)
-    console.log('context', context)
     return await hitCounterController(hitCounterUseCase)
 };
 

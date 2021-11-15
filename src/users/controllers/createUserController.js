@@ -1,9 +1,10 @@
-module.exports = async function(hitCounterUseCase) {
+module.exports = async function(createUserUseCase, user) {
     try {
 
-        await hitCounterUseCase.handle();
+        const newUser = await createUserUseCase.handle(user);
         return {
-            statusCode: 200
+            statusCode: 200,
+            body: JSON.stringify(newUser)
         }
 
     } catch (error) {

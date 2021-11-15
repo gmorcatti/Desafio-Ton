@@ -10,6 +10,26 @@ provider:
   apiKeys:
     - mySecretAPIKey
 
+resources:
+  Resources:
+    usersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: users_ton
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: email
+            AttributeType: S
+        KeySchema:
+          - AttributeName: email
+            KeyType: HASH
+          - AttributeName: id
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
+
 functions:
   verifyToken:
     handler: src/auth/verifyToken.verifyToken
@@ -30,5 +50,23 @@ functions:
     events: 
       - http:
           path: /counter
+          method: get
+          cors: true
+
+  createUser: 
+    handler: src/users/controllers/index.createUser
+    description: Método para criar novo usuário
+    events: 
+      - http:
+          path: /user
+          method: post
+          cors: true
+
+  getUser: 
+    handler: src/users/controllers/index.getUser
+    description: Método para buscar um usuário pelo id
+    events: 
+      - http:
+          path: /user
           method: get
           cors: true

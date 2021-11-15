@@ -2,7 +2,7 @@ module.exports = async function(getCurrentCounterValueUseCase) {
     try {
 
         const currentCounter = await getCurrentCounterValueUseCase.handle();
-        console.log('currentCounter', currentCounter)
+        
         return {
             statusCode: 200,
             body: JSON.stringify({
