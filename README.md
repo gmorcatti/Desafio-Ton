@@ -15,7 +15,11 @@
 
 ## Rotas
 * POST /user - Criação de novo usuário.
+   * Body: application/json
+   * ```js Exemplo: { email: "teste@teste.com", password: "123456" }```
 * POST /auth - Login e Autenticação de usuário, retorna o TOKEN.
+   * Body: application/json
+   * ```js Exemplo: { email: "teste@teste.com", password: "123456" }```
 * GET /user/{id} - Consulta usuário pelo ID.
 * POST /counter/hit - Incrementa o contador.
 * GET /counter - Analisa valor atual do contador.
