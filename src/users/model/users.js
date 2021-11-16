@@ -30,4 +30,4 @@ const userSchema = new dynamoose.Schema({
     timestamps: true
 });
 
-module.exports = dynamoose.model('User', userSchema);
+module.exports = dynamoose.model('users_ton', userSchema);

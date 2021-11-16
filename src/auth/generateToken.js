@@ -10,6 +10,5 @@ exports.generateToken = data => {
     }
     
     const token = jwt.sign(jsonToSign, SECRET_KEY);
-    console.log(token);
     return token;
 }

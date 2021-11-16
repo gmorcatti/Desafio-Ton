@@ -10,7 +10,8 @@ const getUserUseCase = new GetUserUseCase(usersRepository);
 const getUserController = require('./getUserController')
 
 exports.createUser = async (event, context) => {
-    const { email, password } = event;
+    const { email, password } = JSON.parse(event.body);
+
     return await createUserController(createUserUseCase, {
         email,
         password
@@ -18,6 +19,8 @@ exports.createUser = async (event, context) => {
 };
 
 exports.getUser = async (event) => {
-    return await getUserController(getUserUseCase, event.id)
+    const { id } = JSON.parse(event.body);
+    
+    return await getUserController(getUserUseCase, id)
 };
 
