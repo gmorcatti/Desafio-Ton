@@ -1,3 +1,5 @@
+const bcrypt = require('bcryptjs');
+
 class SignInUseCase {
 
     constructor(usersRepository) {
@@ -10,8 +12,9 @@ class SignInUseCase {
         if (!userExists) throw new Error(`User ${user.email} not exists`);
 
         const dbUser = await this.usersRepository.getByEmail(user.email);
-        console.log('USER', user, ' ||||||| ', 'db', dbUser[0]);
-        if(dbUser[0].password !== user.password) throw new Error('Incorrect Password');
+
+        const passwordMatch = await bcrypt.compare(user.password, dbUser[0].password);
+        if(!passwordMatch) throw new Error('Incorrect Password');
 
         const token = await this.usersRepository.signin(user.email);
         return token
