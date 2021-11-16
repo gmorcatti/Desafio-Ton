@@ -70,3 +70,8 @@ functions:
           path: /user
           method: get
           cors: true
+          request:
+            uri: http://url/{id}
+            parameters:
+              paths:
+                id: true

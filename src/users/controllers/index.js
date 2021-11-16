@@ -19,7 +19,7 @@ exports.createUser = async (event, context) => {
 };
 
 exports.getUser = async (event) => {
-    const { id } = JSON.parse(event.body);
+    const { id } = event.pathParameters;
     
     return await getUserController(getUserUseCase, id)
 };
