@@ -16,10 +16,10 @@
 ## Rotas
 * POST /user - Criação de novo usuário.
    * Body: application/json
-   * ```js Exemplo: { email: "teste@teste.com", password: "123456" }```
+   * ```Exemplo: { email: "teste@teste.com", password: "123456" }```
 * POST /auth - Login e Autenticação de usuário, retorna o TOKEN.
    * Body: application/json
-   * ```js Exemplo: { email: "teste@teste.com", password: "123456" }```
+   * ```Exemplo: { email: "teste@teste.com", password: "123456" }```
 * GET /user/{id} - Consulta usuário pelo ID.
 * POST /counter/hit - Incrementa o contador.
 * GET /counter - Analisa valor atual do contador.
@@ -29,6 +29,15 @@
 * Serverless Framework instalado
 * NodeJs instalado
 * Parametrização de todo arquivo "example.env" e transforma-lo em um ".env"
+
+### .ENV
+As variáveis de ambiente deste projeto são:
+* AWS_ACCESS_KEY_ID_ADMIN - AccessKeyId do IAM da AWS com permissões de admin geral.
+* AWS_SECRET_ACCESS_KEY_ADMIN - SecretAccessKey do IAM da AWS com permissões de admin geral.
+* AWS_DEFAULT_REGION_ADMIN - String com a região padrão que os artefatos serão hospedados. EX: us-east-1
+* COUNTAPI_NAMESPACE - Namespace para ser utilizado no CountAPI. EX: 'ton_counter'
+* COUNTAPI_KEY - Key para ser utilizado no CountAPI. EX: 'E8CE61377EBEE67C0698D91E2F694257'
+* JWT_SECRET - Secret do JWT para criptografar e decifrar o token.
 
 ## Instruções Iniciais
 * Cadastrar usuários (Rota POST /user):
