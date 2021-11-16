@@ -7,6 +7,10 @@ class GetUserUseCase {
     async handle(id) {
         const user = await this.usersRepository.getById(id);
 
+        user.forEach(element => {
+            delete element.password;
+        })
+
         return user
     }
 }

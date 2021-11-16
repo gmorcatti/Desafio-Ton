@@ -25,6 +25,9 @@ class CreateUserUseCase {
         user.password = await hashPassword(user.password);
 
         const newUser = await this.usersRepository.create(user);
+
+        delete newUser.password;
+        
         return newUser
     }
 }
