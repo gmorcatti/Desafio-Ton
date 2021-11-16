@@ -1,4 +1,5 @@
 require('dotenv').config();
+const jwt = require('jsonwebtoken');
 
 const User = require('../model/users');
 
@@ -18,6 +19,15 @@ class UsersRepository {
     async emailExists(email) {
         const user = await this.getByEmail(email);
         return user.length > 0;
+    }
+
+    async signin(email) {
+        const SECRET_KEY = process.env.JWT_SECRET;
+
+        const jsonToSign = { email };
+        
+        const token = jwt.sign(jsonToSign, SECRET_KEY);
+        return token;
     }
 }
 

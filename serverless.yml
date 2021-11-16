@@ -34,6 +34,15 @@ functions:
   verifyToken:
     handler: src/auth/verifyToken.verifyToken
 
+  signin: 
+    handler: src/users/controllers/index.signIn
+    description: Método para gerar token de autenticação após login
+    events: 
+      - http:
+          path: /auth
+          method: post
+          cors: true
+
   hitCounter: 
     handler: src/counter/controllers/index.hitCounter
     description: Método para dar hit no Contador
@@ -61,17 +70,14 @@ functions:
           path: /user
           method: post
           cors: true
+          authorizer: verifyToken
 
   getUser: 
     handler: src/users/controllers/index.getUser
     description: Método para buscar um usuário pelo id
     events: 
       - http:
-          path: /user
+          path: /user/{id}
           method: get
           cors: true
-          request:
-            uri: http://url/{id}
-            parameters:
-              paths:
-                id: true
+          authorizer: verifyToken
