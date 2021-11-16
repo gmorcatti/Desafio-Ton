@@ -1,10 +1,14 @@
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
 
+const { randomUUID } = require('crypto');
+
 const User = require('../model/users');
 
 class UsersRepository {
     async create(user) {
+        user.id = randomUUID();
+
         return await User.create(user);
     };
     
