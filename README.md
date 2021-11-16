@@ -26,6 +26,16 @@
 * NodeJs instalado
 * Parametrização de todo arquivo "example.env" e transforma-lo em um ".env"
 
+## Instruções Iniciais
+* Cadastrar usuários (Rota POST /user):
+    * A rota é privada, assim deve-utilizar a API KEY para chama-la.
+    * Header: x-api-key : {{API KEY}}
+* Gerar token de autenticação (Rota POST /auth):
+    * A rota é aberta, então utilizando o login e senha do usuário, irá ser retornado um token.
+* Utilização do token nas demais rotas:
+    * Todas demais rotas precisam de autenticação para serem utilizadas.
+    * Header: Authorization : {{token}} (não é necessário o uso de prefixos).
+
 ## Deploy
 O deploy é realizado pelo próprio arquivo de configuração serverless.yml
 Nele são realizadas as seguintes ações:
